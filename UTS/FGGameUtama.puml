@@ -1,0 +1,67 @@
+@startuml
+start
+
+:Menu Utama;
+
+if (Pilih Menu?) then
+    :Mulai Game;
+    :Pilih Mode Permainan;
+    if (Mode?) then
+        -[#green]-> :Solo;
+        -[#blue]-> :Duo;
+        -[#orange]-> :Trio;
+    else
+        :Keluar;
+        stop;
+    endif
+else
+    :Keluar;
+    stop;
+endif
+
+:Mode Permainan;
+if (Mode = Solo) then
+    :Angka acak 1-100;
+    :Percobaan = 0;
+
+    repeat
+        :Input tebakan;
+        if (Tebakan benar?) then
+            :Tampilkan pesan kemenangan;
+            :Tanya bermain lagi? Y/N;
+        else
+            :Kurangi percobaan;
+            if (Percobaan habis?) then
+                :Tampilkan angka benar;
+                :Tanya bermain lagi? Y/N;
+            endif
+        endif
+    repeat while (Percobaan < 5);
+else if (Mode = Duo or Mode = Trio) then
+    :Angka acak 1-100;
+    :Percobaan = 0;
+
+    repeat
+        :Giliran Pemain;
+        if (Tebakan benar?) then
+            :Tampilkan pemenang;
+            :Tanya bermain lagi? Y/N;
+        else
+            :Kurangi percobaan;
+            if (Semua pemain gagal?) then
+                :Tampilkan angka benar;
+                :Tanya bermain lagi? Y/N;
+            endif
+        endif
+    repeat while (Percobaan < 5);
+endif
+
+if (Bermain lagi?) then
+    :Reset nama pemain; 
+    :Kembali ke Mode Permainan;
+else
+    :Kembali ke Menu Utama;
+endif
+
+stop
+@enduml

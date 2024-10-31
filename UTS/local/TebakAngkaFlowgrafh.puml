@@ -1,0 +1,37 @@
+@startuml
+start
+
+:Selamat Datang di Permainan Tebak Angka;
+:Menampilkan Pilihan;
+if (pilihanMenu == 1) then (Mulai Game)
+    :Inisialisasi Variabel;
+    :angkaRandom = rand() % 100 + 1;
+    :Tebak dalam 5 kali percobaan;
+
+    while (percobaan < 5) is (Tebak lagi)
+        :Input Angka Tebakan;
+        if (angkaTebakan > angkaRandom) then (Terlalu Besar)
+            :Tampilkan 'Terlalu Besar';
+            :percobaan++;
+        else if (angkaTebakan < angkaRandom) then (Terlalu Kecil)
+            :Tampilkan 'Terlalu Kecil';
+            :percobaan++;
+        else (Tebakan Benar)
+            :Tampilkan 'Selamat! Anda Benar!';
+            stop
+        endif
+    endwhile (Selesai)
+
+    :Kesempatan Habis;
+    :Tampilkan angkaRandom;
+else if (pilihanMenu == 2) then (Exit)
+    :Terima Kasih telah Bermain;
+    stop
+else if (pilihanMenu == 3) then (Coming Soon)
+    :Fitur Ini Akan Segera Hadir;
+else (Pilihan Tidak Valid)
+    :Tampilkan Pilihan Tidak Valid;
+endif
+
+stop
+@enduml

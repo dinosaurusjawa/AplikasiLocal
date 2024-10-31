@@ -5,7 +5,7 @@ start
 :Menampilkan pilihan;
 :1. Mulai Game;
 :2. Exit;
-:3. Coming Soon;
+:3. Coming Soon (Multiplayer);
 :Input pilihanMenu;
 
 if (pilihanMenu == 1) then (Ya)
